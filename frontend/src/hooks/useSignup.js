@@ -7,7 +7,7 @@ const useSignup = () => {
     const [loading, setLoading] = useState(false);
     const { setAuthUser } = useAuthContext();
     const navigate = useNavigate();
-    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
     
     const signup = async({ fullName, userName, password, confirmPassword, gender }) => {
         const success = handleInputErrors({ fullName, userName, password, confirmPassword, gender });

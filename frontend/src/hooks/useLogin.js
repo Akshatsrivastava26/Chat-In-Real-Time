@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useAuthContext } from '../context/AuthContext';
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
 
 const useLogin = () => {
     const [loading, setLoading] = useState(false);

@@ -2,8 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
 export const AuthContext = createContext();
 
 export const useAuthContext = () => {

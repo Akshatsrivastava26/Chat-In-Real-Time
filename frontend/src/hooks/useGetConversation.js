@@ -6,8 +6,7 @@ const useGetConversation = () => {
  const [loading, setLoading] = useState(false);
  const [conversations, setConversation] = useState([]);
  const { authUser } = useAuthContext();
- const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
  useEffect(() => {
     const getConversation = async () => {
         setLoading(true);

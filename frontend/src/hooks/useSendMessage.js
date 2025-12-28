@@ -7,7 +7,7 @@ const useSendMessage = () => {
     const [loading, setLoading] = useState(false);
     const { selectedConversation, messages, setMessages } = useConversation();
     const { authUser } = useAuthContext();
-    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || window.location.origin;
 
     const sendMessage = async (message) => {
         if (!selectedConversation?._id) {
