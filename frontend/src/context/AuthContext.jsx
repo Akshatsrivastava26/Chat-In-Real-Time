@@ -1,6 +1,9 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export const AuthContext = createContext();
 
 export const useAuthContext = () => {
@@ -17,7 +20,7 @@ export const AuthContextProvider = ({ children }) => {
                 if (storedUser) {
                     const parsedUser = JSON.parse(storedUser);
                     // Verify the user is still valid by making a request
-                    const res = await fetch("https://chatter-box-av2e.onrender.com/api/users", {
+                    const res = await fetch(`${BACKEND_URL}/api/users`, {
                         headers: {
                             "Authorization": `Bearer ${parsedUser.token}`,
                             "Content-Type": "application/json"

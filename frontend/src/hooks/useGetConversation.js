@@ -6,12 +6,13 @@ const useGetConversation = () => {
  const [loading, setLoading] = useState(false);
  const [conversations, setConversation] = useState([]);
  const { authUser } = useAuthContext();
+ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
  useEffect(() => {
     const getConversation = async () => {
         setLoading(true);
         try {
-            const res = await fetch("https://chatter-box-av2e.onrender.com/api/users", {
+            const res = await fetch(`${BACKEND_URL}/api/users`, {
                 credentials: 'include'
             });
             

@@ -16,6 +16,7 @@ const __dirname = path.resolve();
 dotenv.config();
 
 const allowedOrigins = [
+  "http://localhost:9000", // your frontend dev server
   "http://localhost:5173", // dev
   "https://chatter-box-av2e.onrender.com" // your deployed frontend
 ];

@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useAuthContext } from '../context/AuthContext';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const useLogin = () => {
     const [loading, setLoading] = useState(false);
     const { setAuthUser } = useAuthContext();
+
+    console.log("Backend URL in useLogin:", BACKEND_URL);
 
     const login = async ({ username, password }) => {
         const success = handleInputErrors({ username, password });
@@ -12,7 +15,7 @@ const useLogin = () => {
 
         setLoading(true);
         try {
-            const res = await fetch("https://chatter-box-av2e.onrender.com/api/auth/login", {
+            const res = await fetch(`${BACKEND_URL}/api/auth/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ Username: username, password }),

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useConversation from "../zustand/useConversation";
 import toast from "react-hot-toast";
 import { useAuthContext } from "../context/AuthContext";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const useGetMessages = () => {
 	const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ const useGetMessages = () => {
 			setLoading(true);
 			setError(null);
 			try {
-				const res = await fetch(`https://chatter-box-av2e.onrender.com/api/message/${selectedConversation._id}`, {
+				const res = await fetch(`${BACKEND_URL}/api/message/${selectedConversation._id}`, {
 					headers: {
 						"Authorization": `Bearer ${authUser.token}`,
 						"Content-Type": "application/json"

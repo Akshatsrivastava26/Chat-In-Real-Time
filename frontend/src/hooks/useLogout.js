@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const useLogout = () => {
     const [loading, setLoading] = useState(false);
@@ -11,7 +12,7 @@ const useLogout = () => {
     const logout = async () => {
         setLoading(true);
         try {
-            const res = await fetch("https://chatter-box-av2e.onrender.com/api/auth/logout", {
+            const res = await fetch(`${BACKEND_URL}/api/auth/logout`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" }
             });

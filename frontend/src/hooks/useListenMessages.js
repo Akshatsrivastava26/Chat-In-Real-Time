@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-
 import { useSocketContext } from "../context/SocketContext";
 import useConversation from "../zustand/useConversation";
 import { useAuthContext } from "../context/AuthContext";
-
 import notificationSound from "../assets/sounds/notification.mp3";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const useListenMessages = () => {
 	const { socket } = useSocketContext();
 	const { messages, setMessages, selectedConversation } = useConversation();

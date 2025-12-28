@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client"
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const SocketContext = createContext();
 
@@ -17,7 +18,7 @@ export const SocketContextProvider = ({ children }) => {
         let socketInstance = null;
 
         if (authUser) {
-            socketInstance = io("https://chatter-box-av2e.onrender.com/", {
+            socketInstance = io(`${BACKEND_URL}`, {
                 withCredentials: true,
                 query: {
                     userId: authUser._id

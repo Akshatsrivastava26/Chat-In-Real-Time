@@ -7,6 +7,7 @@ const useSendMessage = () => {
     const [loading, setLoading] = useState(false);
     const { selectedConversation, messages, setMessages } = useConversation();
     const { authUser } = useAuthContext();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const sendMessage = async (message) => {
         if (!selectedConversation?._id) {
@@ -16,7 +17,7 @@ const useSendMessage = () => {
 
         setLoading(true);
         try {
-            const res = await fetch(`https://chatter-box-av2e.onrender.com/api/message/send/${selectedConversation._id}`, {
+            const res = await fetch(`${BACKEND_URL}/api/message/send/${selectedConversation._id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

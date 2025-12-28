@@ -7,6 +7,7 @@ const useSignup = () => {
     const [loading, setLoading] = useState(false);
     const { setAuthUser } = useAuthContext();
     const navigate = useNavigate();
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     
     const signup = async({ fullName, userName, password, confirmPassword, gender }) => {
         const success = handleInputErrors({ fullName, userName, password, confirmPassword, gender });
@@ -14,7 +15,7 @@ const useSignup = () => {
         
         setLoading(true);
         try {
-            const res = await fetch("https://chatter-box-av2e.onrender.com/api/auth/signup", {
+            const res = await fetch(`${BACKEND_URL}/api/auth/signup`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
